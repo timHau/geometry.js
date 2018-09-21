@@ -13,5 +13,19 @@
     "prettier-loader": "^2.1.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "name": "geometry",
+  "description": "**WIP**",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timHau/geometry.js.git"
+  },
+  "author": "tim hau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timHau/geometry.js/issues"
+  },
+  "homepage": "https://github.com/timHau/geometry.js#readme"
 }
