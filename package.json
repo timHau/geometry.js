@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "webpack && open demo/index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.2",
+    "directory-named-webpack-plugin": "^4.0.0",
+    "prettier": "^1.14.3",
+    "prettier-loader": "^2.1.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
