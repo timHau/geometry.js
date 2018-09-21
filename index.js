@@ -1,7 +1,7 @@
-import EuclideanGeometry from "./EuclideanGeometry";
-import * as constants from "./constants";
+const EuclideanGeometry = require("./EuclideanGeometry");
+const constants = require("./constants");
 
-export default {
+module.exports = {
   EuclideanGeometry,
   constants
 };

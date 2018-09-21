@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "0f7121f86357ed3b2aef";
+/******/ 	var hotCurrentHash = "1253558f96c167d2584f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -804,7 +804,6 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EuclideanGeometry; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./constants/constants.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -821,7 +820,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
+var _require = __webpack_require__(/*! ../constants */ "./constants/constants.js"),
+    pi = _require.pi,
+    atan2 = _require.atan2,
+    tan = _require.tan,
+    acos = _require.acos,
+    asin = _require.asin,
+    cos = _require.cos,
+    sin = _require.sin,
+    sqrt = _require.sqrt;
 
 var EuclideanGeometry =
 /*#__PURE__*/
@@ -877,7 +884,7 @@ function () {
 
       var w = xa - xb;
       var h = ya - yb;
-      return Object(_constants__WEBPACK_IMPORTED_MODULE_0__["atan2"])(h, w) * 180 / _constants__WEBPACK_IMPORTED_MODULE_0__["pi"];
+      return atan2(h, w) * 180 / pi;
     }
   }, {
     key: "coordsFromDeg",
@@ -887,7 +894,7 @@ function () {
           baseY = _ref10[1],
           baseR = _ref10[2];
 
-      return [baseX + len * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["cos"])(deg), baseY + len * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["sin"])(deg), baseR];
+      return [baseX + len * cos(deg), baseY + len * sin(deg), baseR];
     }
   }, {
     key: "halfDeg",
@@ -900,9 +907,9 @@ function () {
   }, {
     key: "sss",
     value: function sss(a, b, c) {
-      var alpha = Object(_constants__WEBPACK_IMPORTED_MODULE_0__["acos"])((Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c));
-      var beta = Object(_constants__WEBPACK_IMPORTED_MODULE_0__["acos"])((Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2)) / (2 * a * c));
-      var gamma = _constants__WEBPACK_IMPORTED_MODULE_0__["pi"] - alpha - beta;
+      var alpha = acos((Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c));
+      var beta = acos((Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2)) / (2 * a * c));
+      var gamma = pi - alpha - beta;
       return [alpha, beta, gamma];
     }
   }, {
@@ -918,7 +925,7 @@ function () {
       var options = Object.assign(_circleDefault, o);
       context.beginPath();
       context.moveTo(x + r, y);
-      context.arc(x, y, r, 0, 2 * _constants__WEBPACK_IMPORTED_MODULE_0__["pi"]);
+      context.arc(x, y, r, 0, 2 * pi);
       context.strokeStyle = options.color;
       context.setLineDash(options.dash);
       context.fillStyle = options.color;
@@ -936,7 +943,7 @@ function () {
           _circleDefault = this._circleDefault;
       var options = Object.assign(_circleDefault, o);
       context.beginPath();
-      context.arc(x, y, r, 0, _constants__WEBPACK_IMPORTED_MODULE_0__["pi"], options.cc);
+      context.arc(x, y, r, 0, pi, options.cc);
       context.stroke();
       context.fillStyle = "rgba(0,0,0,0.05)";
       context.fill();
@@ -967,7 +974,7 @@ function () {
       var xa = (b2 * d3 - b3 * d2) / ab - x1;
       var ya = (a3 * d2 - a2 * d3) / ab - y1;
       if (isNaN(xa) || isNaN(ya)) return;
-      return [x1 + xa, y1 + ya, Object(_constants__WEBPACK_IMPORTED_MODULE_0__["sqrt"])(xa * xa + ya * ya)];
+      return [x1 + xa, y1 + ya, sqrt(xa * xa + ya * ya)];
     }
   }, {
     key: "pointOnCircle",
@@ -1016,7 +1023,7 @@ function () {
       var a = dist([xb, yb], [xc, yc]);
       var b = dist([xa, ya], [xc, yc]);
       var c = dist([xa, ya], [xb, yb]);
-      return 0.5 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["sqrt"])((b + c - a) * (c + a - b) * (a + b - c) / (a + c + c));
+      return 0.5 * sqrt((b + c - a) * (c + a - b) * (a + b - c) / (a + c + c));
     }
   }, {
     key: "line",
@@ -1079,8 +1086,8 @@ function () {
           radToDeg = this.radToDeg;
       var d = dist([x, y], p);
       var alpha = getAlphaBetweenPoints([x, y, r], p);
-      var degAlpha = radToDeg(Object(_constants__WEBPACK_IMPORTED_MODULE_0__["asin"])(r / d)) + alpha;
-      var degBeta = radToDeg(Object(_constants__WEBPACK_IMPORTED_MODULE_0__["asin"])(-r / d)) + alpha;
+      var degAlpha = radToDeg(asin(r / d)) + alpha;
+      var degBeta = radToDeg(asin(-r / d)) + alpha;
       return [degAlpha, degBeta];
     }
   }, {
@@ -1106,7 +1113,7 @@ function () {
           r = _ref36[2];
 
       var dist = this.dist;
-      return Object(_constants__WEBPACK_IMPORTED_MODULE_0__["sqrt"])(Math.pow(dist([x, y], p), 2) - Math.pow(r, 2));
+      return sqrt(Math.pow(dist([x, y], p), 2) - Math.pow(r, 2));
     }
   }, {
     key: "triangle",
@@ -1180,18 +1187,18 @@ function () {
           x3 = _ref46$3[0],
           y3 = _ref46$3[1];
 
-      return [(x1 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(alpha) + x2 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(beta) + x3 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(gamma)) / (Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(alpha) + Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(beta) + Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(gamma)), (y1 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(alpha) + y2 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(beta) + y3 * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(gamma)) / (Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(alpha) + Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(beta) + Object(_constants__WEBPACK_IMPORTED_MODULE_0__["tan"])(gamma))];
+      return [(x1 * tan(alpha) + x2 * tan(beta) + x3 * tan(gamma)) / (tan(alpha) + tan(beta) + tan(gamma)), (y1 * tan(alpha) + y2 * tan(beta) + y3 * tan(gamma)) / (tan(alpha) + tan(beta) + tan(gamma))];
     }
   }, {
     key: "altitude",
     value: function altitude(a, alpha, b, beta, c, gamma, p) {
       var coordsFromDeg = this.coordsFromDeg,
           getAlphaBetweenPoints = this.getAlphaBetweenPoints;
-      var ar = b * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["cos"])(alpha);
+      var ar = b * cos(alpha);
       var r = coordsFromDeg(getAlphaBetweenPoints(p[1], p[0]), ar, p[0]);
-      var bs = c * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["cos"])(beta);
+      var bs = c * cos(beta);
       var s = coordsFromDeg(getAlphaBetweenPoints(p[2], p[1]), bs, p[1]);
-      var ct = a * Object(_constants__WEBPACK_IMPORTED_MODULE_0__["cos"])(gamma);
+      var ct = a * cos(gamma);
       var t = coordsFromDeg(getAlphaBetweenPoints(p[0], p[2]), ct, p[2]);
       return [s, t, r];
     }
@@ -1230,11 +1237,11 @@ function () {
 }();
 
 _defineProperty(EuclideanGeometry, "degToRad", function (deg) {
-  return deg * _constants__WEBPACK_IMPORTED_MODULE_0__["pi"] / 180;
+  return deg * pi / 180;
 });
 
 _defineProperty(EuclideanGeometry, "radToDeg", function (rad) {
-  return rad * 180 / _constants__WEBPACK_IMPORTED_MODULE_0__["pi"];
+  return rad * 180 / pi;
 });
 
 
@@ -1262,7 +1269,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cos", function() { return cos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "acos", function() { return acos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tan", function() { return tan; });
-/* harmony import */ var _EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../EuclideanGeometry */ "./EuclideanGeometry/EuclideanGeometry.js");
+var EuclideanGeometry = __webpack_require__(/*! ../EuclideanGeometry */ "./EuclideanGeometry/EuclideanGeometry.js");
 
 var pi = Math.PI;
 var tau = Math.PI * 2;
@@ -1277,22 +1284,22 @@ var atan2 = function atan2(h, w) {
   return Math.atan2(h, w);
 };
 var atan = function atan(d) {
-  return Math.atan(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.atan(EuclideanGeometry.degToRad(d));
 };
 var sin = function sin(d) {
-  return Math.sin(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.sin(EuclideanGeometry.degToRad(d));
 };
 var asin = function asin(d) {
-  return Math.asin(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.asin(EuclideanGeometry.degToRad(d));
 };
 var cos = function cos(d) {
-  return Math.cos(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.cos(EuclideanGeometry.degToRad(d));
 };
 var acos = function acos(d) {
-  return Math.acos(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.acos(EuclideanGeometry.degToRad(d));
 };
 var tan = function tan(d) {
-  return Math.tan(_EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"].degToRad(d));
+  return Math.tan(EuclideanGeometry.degToRad(d));
 };
 
 /***/ }),
@@ -1301,19 +1308,17 @@ var tan = function tan(d) {
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EuclideanGeometry */ "./EuclideanGeometry/EuclideanGeometry.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./constants/constants.js");
+var EuclideanGeometry = __webpack_require__(/*! ./EuclideanGeometry */ "./EuclideanGeometry/EuclideanGeometry.js");
 
+var constants = __webpack_require__(/*! ./constants */ "./constants/constants.js");
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-  EuclideanGeometry: _EuclideanGeometry__WEBPACK_IMPORTED_MODULE_0__["default"],
-  constants: _constants__WEBPACK_IMPORTED_MODULE_1__
-});
+module.exports = {
+  EuclideanGeometry: EuclideanGeometry,
+  constants: constants
+};
 
 /***/ })
 

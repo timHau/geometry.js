@@ -1,4 +1,4 @@
-import { pi, atan2, tan, acos, asin, cos, sin, sqrt } from "../constants";
+const { pi, atan2, tan, acos, asin, cos, sin, sqrt } = require("../constants");
 
 export default class EuclideanGeometry {
   constructor(context) {

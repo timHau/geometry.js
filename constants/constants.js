@@ -1,4 +1,4 @@
-import EuclideanGeometry from "../EuclideanGeometry";
+const EuclideanGeometry = require("../EuclideanGeometry");
 
 export const pi = Math.PI;
 export const tau = Math.PI * 2;
