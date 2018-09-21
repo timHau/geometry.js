@@ -1,4 +1,4 @@
-import EuclideanGeometry from '../EuclideanGeometry'
+import EuclideanGeometry from "../EuclideanGeometry";
 
 export const pi = Math.PI;
 export const tau = Math.PI * 2;

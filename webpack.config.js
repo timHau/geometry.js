@@ -4,9 +4,8 @@ const { readFileSync } = require('fs')
 const DirectoryNamedPlugin = require('directory-named-webpack-plugin')
 
 module.exports = {
-  entry: join(__dirname, 'src/index.js'),
+  entry: join(__dirname, 'index.js'),
   resolve: {
-    modules: [ resolve(__dirname, 'src'), resolve(__dirname, 'node_modules')],
     plugins: [new DirectoryNamedPlugin(true)],
   },
   mode: 'development',
